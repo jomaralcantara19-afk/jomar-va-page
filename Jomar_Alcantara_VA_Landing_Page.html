@@ -1,1 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jomar Alcantara — Operations &amp; Virtual Assistant Support</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16233A;
+    --ink-soft:#243654;
+    --paper:#EEF1EE;
+    --paper-warm:#F6F4EE;
+    --amber:#DE9F35;
+    --amber-deep:#B97B1E;
+    --line:#D8DCD5;
+    --text-dark:#1B2430;
+    --text-mute:#5B6472;
+    --good:#3F8F6B;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'IBM Plex Sans', sans-serif;
+    color:var(--text-dark);
+    background:var(--paper-warm);
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
 
+  /* Top bar */
+  .topbar{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 0;
+  }
+  .brand{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.05rem;}
+  .brand span{color:var(--amber-deep);}
+  .topbar-contact{
+    font-size:0.85rem;color:var(--text-mute);
+  }
+  .topbar-contact a{text-decoration:none;border-bottom:1px solid var(--line);}
+
+  /* Hero */
+  .hero{
+    background:var(--ink);
+    color:#F4F1EB;
+    padding:64px 0 72px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:2.7rem;
+    line-height:1.12;
+    font-weight:700;
+    color:#fff;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--amber);
+  }
+  .hero p.lede{
+    margin-top:20px;
+    font-size:1.08rem;
+    color:#C9D0DC;
+    max-width:46ch;
+  }
+  .hero-ctas{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:13px 22px;
+    border-radius:3px;
+    font-size:0.92rem;
+    font-weight:600;
+    text-decoration:none;
+    font-family:'IBM Plex Sans',sans-serif;
+  }
+  .btn-primary{background:var(--amber);color:#1B1204;}
+  .btn-ghost{border:1px solid #435170;color:#EDEFF3;}
+
+  /* Status board (hero visual) */
+  .board{
+    background:var(--ink-soft);
+    border:1px solid #3A4B6E;
+    border-radius:6px;
+    padding:20px 20px 8px;
+  }
+  .board-head{
+    font-size:0.78rem;
+    color:#9AA6BC;
+    padding-bottom:14px;
+    border-bottom:1px solid #3A4B6E;
+    margin-bottom:4px;
+  }
+  .board-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:13px 0;
+    border-bottom:1px solid #2E3D5C;
+    font-size:0.92rem;
+  }
+  .board-row:last-child{border-bottom:none;}
+  .status-pill{
+    font-size:0.72rem;
+    padding:3px 10px;
+    border-radius:20px;
+    background:rgba(63,143,107,0.18);
+    color:#7FD1AA;
+    font-weight:600;
+  }
+
+  /* Services */
+  .section{padding:76px 0;}
+  .section-head{max-width:60ch;margin-bottom:44px;}
+  .section-head h2{font-size:1.9rem;font-weight:600;}
+  .section-head p{color:var(--text-mute);margin-top:12px;font-size:1rem;}
+
+  .service-list{
+    border-top:1px solid var(--line);
+  }
+  .service-row{
+    display:grid;
+    grid-template-columns:1.4fr 2fr;
+    gap:32px;
+    padding:26px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .service-row h3{font-size:1.15rem;font-weight:600;color:var(--ink);}
+  .service-row p{margin:8px 0 0;color:var(--text-mute);font-size:0.96rem;max-width:52ch;}
+
+  /* Background / tools */
+  .split{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+  }
+  .split h3{font-size:1.2rem;font-weight:600;margin-bottom:14px;}
+  .timeline-item{
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .timeline-item:last-child{border-bottom:none;}
+  .timeline-role{font-weight:600;font-size:0.98rem;}
+  .timeline-meta{font-size:0.82rem;color:var(--text-mute);margin-top:2px;}
+
+  .tool-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px;}
+  .tag{
+    border:1px solid var(--line);
+    background:#fff;
+    padding:8px 14px;
+    border-radius:3px;
+    font-size:0.85rem;
+    color:var(--text-dark);
+  }
+
+  /* How I work */
+  .principles{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:32px;
+  }
+  .principle h3{font-size:1.05rem;font-weight:600;margin-bottom:10px;color:var(--amber-deep);}
+  .principle p{font-size:0.93rem;color:var(--text-mute);}
+
+  /* Contact */
+  .contact{
+    background:var(--ink);
+    color:#F0EEE8;
+    padding:64px 0;
+  }
+  .contact h2{font-size:2rem;font-weight:600;color:#fff;max-width:22ch;}
+  .contact p{color:#C9D0DC;margin-top:14px;max-width:50ch;}
+  .contact-row{
+    margin-top:32px;
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+    font-size:0.95rem;
+  }
+  .contact-row a{text-decoration:none;border-bottom:1px solid #4A5A7C;padding-bottom:2px;}
+
+  footer{
+    text-align:center;
+    padding:24px 0;
+    font-size:0.8rem;
+    color:var(--text-mute);
+  }
+
+  @media (max-width:760px){
+    .hero-grid{grid-template-columns:1fr;}
+    .service-row{grid-template-columns:1fr;}
+    .split{grid-template-columns:1fr;}
+    .principles{grid-template-columns:1fr;}
+    .hero h1{font-size:2.1rem;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="wrap topbar">
+    <div class="brand">Jomar <span>Alcantara</span></div>
+    <div class="topbar-contact">
+      <a href="mailto:jomaralcantara19@gmail.com">jomaralcantara19@gmail.com</a> &nbsp;·&nbsp; Taguig, PH
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>I keep the back office <em>running</em> so you don't have to.</h1>
+        <p class="lede">Aspiring Virtual Assistant with 3.5+ years handling order processing, CRM data, billing accuracy, and customer support for global teams. If it involves keeping records straight and nothing falling through the cracks, that's my lane.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="mailto:jomaralcantara19@gmail.com">Get in touch</a>
+          <a class="btn btn-ghost" href="tel:+639686752688">09686752688</a>
+        </div>
+      </div>
+      <div class="board">
+        <div class="board-head">Today's queue</div>
+        <div class="board-row"><span>Inbox &amp; records</span><span class="status-pill">Cleared</span></div>
+        <div class="board-row"><span>Order &amp; billing data</span><span class="status-pill">Reconciled</span></div>
+        <div class="board-row"><span>Client follow-ups</span><span class="status-pill">Sent</span></div>
+        <div class="board-row"><span>Reports &amp; tracking</span><span class="status-pill">Updated</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What I can take off your plate</h2>
+        <p>Built on real, day-to-day experience — not a list of software I've heard of.</p>
+      </div>
+      <div class="service-list">
+        <div class="service-row">
+          <h3>Order &amp; account management</h3>
+          <p>Processing orders, quotations, and subscriptions in Salesforce; keeping customer and billing records accurate and audit-ready.</p>
+        </div>
+        <div class="service-row">
+          <h3>Data entry &amp; reporting</h3>
+          <p>Excel-based tracking and reporting, spotting discrepancies before they become bigger problems, and keeping documentation consistent.</p>
+        </div>
+        <div class="service-row">
+          <h3>Billing &amp; invoice verification</h3>
+          <p>Cross-checking invoices and billing data against source records, flagging mismatches early rather than after they reach a customer.</p>
+        </div>
+        <div class="service-row">
+          <h3>Customer &amp; client support</h3>
+          <p>Handling inquiries, follow-ups, and account questions across email and chat, drawn from years in travel, telecom, and retail support.</p>
+        </div>
+        <div class="service-row">
+          <h3>Admin &amp; documentation</h3>
+          <p>Standardizing how information gets recorded, so nothing lives only in someone's head.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--paper);">
+    <div class="wrap split">
+      <div>
+        <h3>Background</h3>
+        <div class="timeline-item">
+          <div class="timeline-role">Order Management Representative</div>
+          <div class="timeline-meta">HCL Technologies · 09/2024 – Present</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Customer Service – Travel Account</div>
+          <div class="timeline-meta">TELUS International PH · 09/2023 – 06/2024</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Customer Service – T-Mobile Account</div>
+          <div class="timeline-meta">Valor Global Inc. · 05/2023 – 08/2023</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Customer Service – Retail Account</div>
+          <div class="timeline-meta">Alorica PH · 09/2022 – 04/2023</div>
+        </div>
+      </div>
+      <div>
+        <h3>Tools I work in daily</h3>
+        <div class="tool-tags">
+          <span class="tag">Salesforce</span>
+          <span class="tag">MS Excel</span>
+          <span class="tag">CRM Platforms</span>
+          <span class="tag">Order Management Systems</span>
+          <span class="tag">Google Workspace</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How I work</h2>
+      </div>
+      <div class="principles">
+        <div class="principle">
+          <h3>I flag issues early</h3>
+          <p>I don't wait for a discrepancy to become a customer complaint — I check before it ships.</p>
+        </div>
+        <div class="principle">
+          <h3>I document as I go</h3>
+          <p>Records stay accurate and audit-ready, not reconstructed after the fact.</p>
+        </div>
+        <div class="principle">
+          <h3>I manage my own workload</h3>
+          <p>Multiple priorities, deadlines, and systems — handled without needing to be chased.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="wrap">
+      <h2>Looking for reliable support with the operational side of your business?</h2>
+      <p>I'm currently open to virtual assistant and remote operations opportunities — happy to talk through what you need help with.</p>
+      <div class="contact-row">
+        <a href="mailto:jomaralcantara19@gmail.com">jomaralcantara19@gmail.com</a>
+        <a href="tel:+639686752688">09686752688</a>
+        <span>Taguig, Philippines</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>Jomar Alcantara — Virtual Assistant &amp; Operations Support</footer>
+
+</body>
+</html>
